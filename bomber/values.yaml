@@ -12,25 +12,25 @@ image:
      tag: $cart      
     dynamodb:
      name: dynamodb
-     tag: $dynamodb
+     tag: $bomber_dynamodb
     catalog:
      name: catalog
-     tag: $catalog 
+     tag: $bomber_catalog 
     mysql:
      name: mysql
-     tag: $mysql 
+     tag: $bomber_mysql 
     checkout:
      name: checkout
-     tag: $checkout
+     tag: $bomber_checkout
     redis:
      name: redis
-     tag: $redis
+     tag: $bomber_redis
     orders:
      name: orders
-     tag: $orders
+     tag: $bomber_orders
     rabbitmq:
      name: rabbitmq
-     tag: $rabbitmq
+     tag: $bomber_rabbitmq
     ui:
      name: ui
-     tag: $ui   
+     tag: $bomber_ui   
