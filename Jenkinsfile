@@ -3,6 +3,12 @@ pipeline {
   environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
 	}
+options {
+    buildDiscarder(logRotator(numToKeepStr: '20'))
+    disableConcurrentBuilds()
+    timeout (time: 60, unit: 'MINUTES')
+    timestamps()
+  }
     stages {
 
         stage('Setup parameters') {
