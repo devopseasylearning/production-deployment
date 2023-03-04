@@ -154,6 +154,7 @@ pipeline {
                       docker push   devopseasylearning2021/orders:$orders
                       docker push            devopseasylearning2021/rabbitmq:$rabbitmq
                       docker push   devopseasylearning2021/ui:$ui
+                      git clone git@github.com:devopseasylearning/production-deployment.git
                 '''
             }
         }

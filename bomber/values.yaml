@@ -1,37 +1,36 @@
 
 replicaCount: 1
-
 image:
   registry: deveopseasylearning2021
   pullPolicy: IfNotPresent
   repository:
     assets:
      name: assets
-     tag: 0.2.0        
+     tag: $assets        
     cart:
      name: cart
-     tag: 0.2.0       
+     tag: $cart      
     dynamodb:
      name: dynamodb
-     tag: 1.13.1  
+     tag: $dynamodb
     catalog:
      name: catalog
-     tag: 0.2.0    
+     tag: $catalog 
     mysql:
      name: mysql
-     tag: 5.7.6     
+     tag: $mysql 
     checkout:
      name: checkout
-     tag: 0.2.0  
+     tag: $checkout
     redis:
      name: redis
-     tag: 6.0-alpine
+     tag: $redis
     orders:
      name: orders
-     tag: 0.2.0    
+     tag: $orders
     rabbitmq:
      name: rabbitmq
-     tag: 0.0.2  
+     tag: $rabbitmq
     ui:
      name: ui
-     tag: 0.2.0       
+     tag: $ui   
