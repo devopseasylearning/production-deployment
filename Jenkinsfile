@@ -168,6 +168,7 @@ stage('Update values file') {
 	          ]) {
 
 	            sh '''
+rm -rf production-deployment || true
 git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
 cd production-deployment/bomber
 cat <<EOF > values.yaml
