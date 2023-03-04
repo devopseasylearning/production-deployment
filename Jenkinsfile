@@ -168,7 +168,7 @@ stage('Update values file') {
 	          ]) {
 
 	            sh '''
-git clone git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
+git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
 cd production-deployment/bomber
 cat <<EOF > values.yaml
 replicaCount: 1
