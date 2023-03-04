@@ -44,8 +44,8 @@ pipeline {
 
                           string(
                             defaultValue: '1.13.1',
-                            name: 'dynamodb-local',
-			    description: 'Enter the image Tag to deploy dynamodb-local',
+                            name: 'dynamodb',
+			    description: 'Enter the image Tag to deploy dynamodb',
                             trim: true
                             ),
 
@@ -80,7 +80,7 @@ pipeline {
                             ),
 
                           string(
-                            defaultValue: '3-management',
+                            defaultValue: '0.0.2',
                             name: 'rabbitmq',
 			    description: 'Enter the image Tag to deploy rabbitmq',
                             trim: true
@@ -123,30 +123,30 @@ pipeline {
                 sh '''
                 docker pull  devopseasylearning2021/assets:0.2.0          
                 docker pull  devopseasylearning2021/cart:0.2.0            
-                docker pull  devopseasylearning2021/dynamodb-local:1.13.1 
+                docker pull  devopseasylearning2021/dynamodb:1.13.1 
                 docker pull  devopseasylearning2021/catalog:0.2.0         
                 docker pull   devopseasylearning2021/mysql:5.7.6          
                 docker pull   devopseasylearning2021/checkout:0.2.0       
                 docker pull   devopseasylearning2021/redis:6.0-alpine     
                 docker pull   devopseasylearning2021/orders:0.2.0         
-                docker pull   devopseasylearning2021/rabbitmq:3-management
+                docker pull   devopseasylearning2021/rabbitmq:0.0.2
                 docker pull    devopseasylearning2021/ui:0.2.0            
                       
                       docker tag  devopseasylearning2021/assets:0.2.0           devopseasylearning2021/assets:$assets
                       docker tag  devopseasylearning2021/cart:0.2.0             devopseasylearning2021/cart:$cart
-                      docker tag  devopseasylearning2021/dynamodb-local:1.13.1          devopseasylearning2021/dynamodb-local:$dynamodb-local 
+                      docker tag  devopseasylearning2021/dynamodb:1.13.1          devopseasylearning2021/dynamodb-local:$dynamodb
                       docker tag  devopseasylearning2021/catalog:0.2.0           devopseasylearning2021/catalog:$catalog 
                       docker tag   devopseasylearning2021/mysql:5.7.6            devopseasylearning2021/mysql:$mysql
                       docker tag   devopseasylearning2021/checkout:0.2.0          devopseasylearning2021/checkout:$checkout
                       docker tag   devopseasylearning2021/redis:6.0-alpine           devopseasylearning2021/redis:$redis 
                       docker tag   devopseasylearning2021/orders:0.2.0           devopseasylearning2021/orders:$orders
-                      docker tag   devopseasylearning2021/rabbitmq:3-management           devopseasylearning2021/rabbitmq:$rabbitmq
+                      docker tag   devopseasylearning2021/rabbitmq:0.0.2          devopseasylearning2021/rabbitmq:$rabbitmq
                       docker tag    devopseasylearning2021/ui:0.2.0              devopseasylearning2021/ui:$ui
                       
                       
                       docker push  devopseasylearning2021/assets:$assets
                       docker push  devopseasylearning2021/cart:$cart
-                      docker push          devopseasylearning2021/dynamodb-local:$dynamodb-local 
+                      docker push          devopseasylearning2021/dynamodb:$dynamodb 
                       docker push   devopseasylearning2021/catalog:$catalog 
                       docker push   devopseasylearning2021/mysql:$mysql
                       docker push    devopseasylearning2021/checkout:$checkout
