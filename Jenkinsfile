@@ -164,7 +164,7 @@ stage('Update values file') {
 	      steps {
 	        script {
 	          withCredentials([
-	            string(credentialsId: 'github-token', variable: 'TOKEN'),
+	            string(credentialsId: 'github-token2', variable: 'TOKEN'),
 	          ]) {
 
 	            sh '''
