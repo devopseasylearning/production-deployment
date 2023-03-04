@@ -12,7 +12,7 @@ pipeline {
                         parameters([
                         
                         choice(
-                            choices: ['Bomber', 'Food', 'Kanibal', 'Tamos', 'Thunder', 'Tttan', 'Yelb'], 
+                            choices: ['Bomber', 'Food', 'Kanibal', 'Tamos', 'Thunder', 'Titan', 'Yelb'], 
                             name: 'Application'
                                  
                                 ),
