@@ -5,32 +5,32 @@ image:
   repository:
     assets:
      name: assets
-     tag: 0.2.0        
+     tag: v1.0.0        
     cart:
      name: cart
-     tag: 0.2.0      
+     tag: v1.0.0      
     dynamodb:
      name: dynamodb
-     tag: 1.13.1
+     tag: v1.0.0
     catalog:
      name: catalog
-     tag: 0.2.0 
+     tag: v1.0.0 
     mysql:
      name: mysql
-     tag: 5.7.6 
+     tag: v1.0.0 
     checkout:
      name: checkout
-     tag: 0.2.0
+     tag: v1.0.0
     redis:
      name: redis
-     tag: 6.0-alpine
+     tag: v1.0.0
     orders:
      name: orders
-     tag: 0.2.0
+     tag: v1.0.0
     rabbitmq:
      name: rabbitmq
-     tag: 0.0.2
+     tag: v1.0.0
     ui:
      name: ui
-     tag: 0.2.0   
+     tag: v1.0.0   
 
