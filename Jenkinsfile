@@ -154,10 +154,78 @@ pipeline {
                       docker push   devopseasylearning2021/orders:$orders
                       docker push            devopseasylearning2021/rabbitmq:$rabbitmq
                       docker push   devopseasylearning2021/ui:$ui
-                      git clone git@github.com:devopseasylearning/production-deployment.git
                 '''
             }
         }
+
+
+stage('Update values file') {
+
+	      steps {
+	        script {
+	          withCredentials([
+	            string(credentialsId: 'github-token', variable: 'TOKEN'),
+	          ]) {
+
+	            sh '''
+git clone git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
+cd production-deployment/bomber
+cat <<EOF > values.yaml
+replicaCount: 1
+image:
+  registry: deveopseasylearning2021
+  pullPolicy: IfNotPresent
+  repository:
+    assets:
+     name: assets
+     tag: $assets        
+    cart:
+     name: cart
+     tag: $cart      
+    dynamodb:
+     name: dynamodb
+     tag: $dynamodb
+    catalog:
+     name: catalog
+     tag: $catalog 
+    mysql:
+     name: mysql
+     tag: $mysql 
+    checkout:
+     name: checkout
+     tag: $checkout
+    redis:
+     name: redis
+     tag: $redis
+    orders:
+     name: orders
+     tag: $orders
+    rabbitmq:
+     name: rabbitmq
+     tag: $rabbitmq
+    ui:
+     name: ui
+     tag: $ui   
+
+EOF
+
+
+git config --global user.name "devopseasylearning"
+git config --global user.email info@devopseasylearning.com
+git add -A 
+git commit -m "commit from Jenkins"
+git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git  || true
+	            '''
+	          }
+
+	        }
+
+	      }
+
+	    }
+
+
+
     }
 
 
