@@ -134,7 +134,7 @@ pipeline {
                       
                       docker tag  devopseasylearning2021/assets:0.2.0           devopseasylearning2021/assets:$assets
                       docker tag  devopseasylearning2021/cart:0.2.0             devopseasylearning2021/cart:$cart
-                      docker tag  devopseasylearning2021/dynamodb:1.13.1          devopseasylearning2021/dynamodb-local:$dynamodb
+                      docker tag  devopseasylearning2021/dynamodb:1.13.1          devopseasylearning2021/dynamodb:$dynamodb
                       docker tag  devopseasylearning2021/catalog:0.2.0           devopseasylearning2021/catalog:$catalog 
                       docker tag   devopseasylearning2021/mysql:5.7.6            devopseasylearning2021/mysql:$mysql
                       docker tag   devopseasylearning2021/checkout:0.2.0          devopseasylearning2021/checkout:$checkout
