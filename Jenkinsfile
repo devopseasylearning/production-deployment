@@ -220,7 +220,7 @@ EOF
 git config --global user.name "devopseasylearning"
 git config --global user.email info@devopseasylearning.com
 git add -A 
-git commit -m "commit from Jenkins"
+git commit -m "commit from Jenkins" || true
 git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git  || true
 	            '''
 	          }
