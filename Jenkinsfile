@@ -26,7 +26,7 @@ pipeline {
                                 name: 'Please_leave_this_section_as_it_is',
                                 trim: true
                             ),
-                            
+
                           string(
                             defaultValue: '0.2.0',
                             name: 'assets',
@@ -114,13 +114,24 @@ pipeline {
 			}
 		}
 
-    stage('Hello') {
+    stage('getting started') {
       when{   
           expression {
             env.Application == 'Bomber' }
             }
             steps {
                 sh '''
+                docker pull  devopseasylearning2021/assets:0.2.0          
+                docker pull  devopseasylearning2021/cart:0.2.0            
+                docker pull  devopseasylearning2021/dynamodb-local:1.13.1 
+                docker pull  devopseasylearning2021/catalog:0.2.0         
+                docker pull   devopseasylearning2021/mysql:5.7.6          
+                docker pull   devopseasylearning2021/checkout:0.2.0       
+                docker pull   devopseasylearning2021/redis:6.0-alpine     
+                docker pull   devopseasylearning2021/orders:0.2.0         
+                docker pull   devopseasylearning2021/rabbitmq:3-management
+                docker pull    devopseasylearning2021/ui:0.2.0            
+                      
                       docker tag  devopseasylearning2021/assets:0.2.0           devopseasylearning2021/assets:$assets
                       docker tag  devopseasylearning2021/cart:0.2.0             devopseasylearning2021/cart:$cart
                       docker tag  devopseasylearning2021/dynamodb-local:1.13.1          devopseasylearning2021/dynamodb-local:$dynamodb-local 
