@@ -5,57 +5,32 @@ image:
   repository:
     assets:
      name: assets
-     tag: v1.0.0        
+     tag: 0.2.0        
     cart:
      name: cart
-     tag: v1.0.0      
+     tag: 0.2.0      
     dynamodb:
      name: dynamodb
-<<<<<<< HEAD
-     tag: $bomber_dynamodb
+     tag: 1.13.1
     catalog:
      name: catalog
-     tag: $bomber_catalog 
+     tag: 0.2.0 
     mysql:
      name: mysql
-     tag: $bomber_mysql 
+     tag: 5.7.6 
     checkout:
      name: checkout
-     tag: $bomber_checkout
+     tag: 0.2.0
     redis:
      name: redis
-     tag: $bomber_redis
+     tag: 6.0-alpine
     orders:
      name: orders
-     tag: $bomber_orders
+     tag: 0.2.0
     rabbitmq:
      name: rabbitmq
-     tag: $bomber_rabbitmq
+     tag: 0.0.2
     ui:
      name: ui
-     tag: $bomber_ui   
-=======
-     tag: v1.0.0
-    catalog:
-     name: catalog
-     tag: v1.0.0 
-    mysql:
-     name: mysql
-     tag: v1.0.0 
-    checkout:
-     name: checkout
-     tag: v1.0.0
-    redis:
-     name: redis
-     tag: v1.0.0
-    orders:
-     name: orders
-     tag: v1.0.0
-    rabbitmq:
-     name: rabbitmq
-     tag: v1.0.0
-    ui:
-     name: ui
-     tag: v1.0.0   
+     tag: 0.2.0   
 
->>>>>>> ea034b81d1c2d0b87f84fde3e7608cca0274a142
