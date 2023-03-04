@@ -1,359 +1,3 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    app.kubernetes.io/created-by: retail-store-sample
-  name: stormer
-
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: assets
-  namespace: stormer
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: carts
-  namespace: stormer
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: catalog
-  namespace: stormer
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: checkout
-  namespace: stormer
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: orders
-  namespace: stormer
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: rabbitmq
-  namespace: stormer
----
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  labels:
-    app.kubernetes.io/component: service
-    app.kubernetes.io/instance: ui
-    app.kubernetes.io/name: ui
-  name: ui
-  namespace: stormer
----
-apiVersion: v1
-data:
-  PORT: "8080"
-kind: ConfigMap
-metadata:
-  name: assets
-  namespace: stormer
----
-apiVersion: v1
-data:
-  AWS_ACCESS_KEY_ID: key
-  AWS_SECRET_ACCESS_KEY: secret
-  CARTS_DYNAMODB_CREATETABLE: "true"
-  CARTS_DYNAMODB_ENDPOINT: http://carts-dynamodb:8000
-  CARTS_DYNAMODB_TABLENAME: Items
-kind: ConfigMap
-metadata:
-  name: carts
-  namespace: stormer
----
-apiVersion: v1
-data: null
-kind: ConfigMap
-metadata:
-  name: catalog
-  namespace: stormer
----
-apiVersion: v1
-data:
-  ENDPOINTS_ORDERS: http://orders.orders.svc:80
-  REDIS_URL: redis://checkout-redis:6379
-kind: ConfigMap
-metadata:
-  name: checkout
-  namespace: stormer
----
-apiVersion: v1
-data:
-  SPRING_PROFILES_ACTIVE: mysql,rabbitmq
-  SPRING_RABBITMQ_HOST: rabbitmq.rabbitmq.svc
-kind: ConfigMap
-metadata:
-  name: orders
-  namespace: stormer
----
-apiVersion: v1
-data: null
-kind: ConfigMap
-metadata:
-  name: rabbitmq
-  namespace: stormer
----
-apiVersion: v1
-data:
-  ENDPOINTS_ASSETS: http://assets.assets.svc:80
-  ENDPOINTS_CARTS: http://carts.carts.svc:80
-  ENDPOINTS_CATALOG: http://catalog.catalog.svc:80
-  ENDPOINTS_CHECKOUT: http://checkout.checkout.svc:80
-  ENDPOINTS_ORDERS: http://orders.orders.svc:80
-kind: ConfigMap
-metadata:
-  name: ui
-  namespace: stormer
----
-apiVersion: v1
-data:
-  endpoint: Y2F0YWxvZy1teXNxbDozMzA2
-  name: Y2F0YWxvZw==
-  password: ZGVmYXVsdF9wYXNzd29yZA==
-  username: Y2F0YWxvZ191c2Vy
-kind: Secret
-metadata:
-  name: catalog-db
-  namespace: stormer
----
-apiVersion: v1
-data:
-  name: b3JkZXJz
-  password: ZGVmYXVsdF9wYXNzd29yZA==
-  url: amRiYzptYXJpYWRiOi8vb3JkZXJzLW15c3FsOjMzMDYvb3JkZXJz
-  username: b3JkZXJzX3VzZXI=
-kind: Secret
-metadata:
-  name: orders-db
-  namespace: stormer
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: assets
-  namespace: stormer
-spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: http
-  selector:
-    app.kubernetes.io/component: service
-    app.kubernetes.io/instance: assets
-    app.kubernetes.io/name: assets
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: carts
-  namespace: stormer
-spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: http
-  selector:
-    app.kubernetes.io/component: service
-    app.kubernetes.io/instance: carts
-    app.kubernetes.io/name: carts
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: carts-dynamodb
-  namespace: stormer
-spec:
-  ports:
-  - name: dynamodb
-    port: 8000
-    protocol: TCP
-    targetPort: dynamodb
-  selector:
-    app.kubernetes.io/component: dynamodb
-    app.kubernetes.io/instance: carts
-    app.kubernetes.io/name: carts
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: catalog
-  namespace: stormer
-spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: http
-  selector:
-    app.kubernetes.io/component: service
-    app.kubernetes.io/instance: catalog
-    app.kubernetes.io/name: catalog
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: catalog-mysql
-  namespace: stormer
-spec:
-  ports:
-  - name: mysql
-    port: 3306
-    protocol: TCP
-    targetPort: mysql
-  selector:
-    app.kubernetes.io/component: mysql
-    app.kubernetes.io/instance: catalog
-    app.kubernetes.io/name: catalog
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: checkout
-  namespace: stormer
-spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: http
-  selector:
-    app.kubernetes.io/component: service
-    app.kubernetes.io/instance: checkout
-    app.kubernetes.io/name: checkout
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: checkout-redis
-  namespace: stormer
-spec:
-  ports:
-  - name: redis
-    port: 6379
-    protocol: TCP
-    targetPort: redis
-  selector:
-    app.kubernetes.io/component: redis
-    app.kubernetes.io/instance: checkout
-    app.kubernetes.io/name: checkout
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: orders
-  namespace: stormer
-spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: http
-  selector:
-    app.kubernetes.io/component: service
-    app.kubernetes.io/instance: orders
-    app.kubernetes.io/name: orders
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: orders-mysql
-  namespace: stormer
-spec:
-  ports:
-  - name: mysql
-    port: 3306
-    protocol: TCP
-    targetPort: mysql
-  selector:
-    app.kubernetes.io/component: mysql
-    app.kubernetes.io/instance: orders
-    app.kubernetes.io/name: orders
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: rabbitmq
-  namespace: stormer
-spec:
-  ports:
-  - name: amqp
-    port: 5672
-    protocol: TCP
-    targetPort: amqp
-  - name: http
-    port: 15672
-    protocol: TCP
-    targetPort: http
-  selector:
-    app.kubernetes.io/component: rabbitmq
-    app.kubernetes.io/instance: rabbitmq
-    app.kubernetes.io/name: rabbitmq
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app.kubernetes.io/component: service
-    app.kubernetes.io/instance: ui
-    app.kubernetes.io/name: ui
-  name: ui
-  namespace: stormer
-spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: http
-  selector:
-    app.kubernetes.io/component: service
-    app.kubernetes.io/instance: ui
-    app.kubernetes.io/name: ui
-  type: LoadBalancer
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    app.kubernetes.io/component: service
-    app.kubernetes.io/instance: ui
-    app.kubernetes.io/name: ui
-  name: ui-lb
-  namespace: stormer
-spec:
-  ports:
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: http
-  selector:
-    app.kubernetes.io/component: service
-    app.kubernetes.io/instance: ui
-    app.kubernetes.io/name: ui
-  type: LoadBalancer
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -384,7 +28,7 @@ spec:
       - envFrom:
         - configMapRef:
             name: assets
-        image: public.ecr.aws/aws-containers/retail-store-sample-assets:0.2.0
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository.assets.name }}:{{ .Values.image.repository.assets.tag }}"
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -454,7 +98,7 @@ spec:
         envFrom:
         - configMapRef:
             name: carts
-        image: public.ecr.aws/aws-containers/retail-store-sample-cart:0.2.0
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository.cart.name }}:{{ .Values.image.repository.cart.tag }}"
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -516,7 +160,7 @@ spec:
         app.kubernetes.io/team: database
     spec:
       containers:
-      - image: amazon/dynamodb-local:1.13.1
+      - image: "{{ .Values.image.registry }}/{{ .Values.image.repository.dynamodb.name }}:{{ .Values.image.repository.dynamodb.tag }}"
         imagePullPolicy: IfNotPresent
         name: dynamodb
         ports:
@@ -581,7 +225,7 @@ spec:
         envFrom:
         - configMapRef:
             name: catalog
-        image: public.ecr.aws/aws-containers/retail-store-sample-catalog:0.2.0
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository.catalog.name }}:{{ .Values.image.repository.catalog.tag }}"
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -667,7 +311,7 @@ spec:
             secretKeyRef:
               key: name
               name: catalog-db
-        image: mysql:5.7.6
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository.mysql.name }}:{{ .Values.image.repository.mysql.tag }}"
         imagePullPolicy: IfNotPresent
         name: mysql
         ports:
@@ -706,7 +350,7 @@ spec:
       - envFrom:
         - configMapRef:
             name: checkout
-        image: public.ecr.aws/aws-containers/retail-store-sample-checkout:0.2.0
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository.checkout.name }}:{{ .Values.image.repository.checkout.tag }}"
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -768,7 +412,7 @@ spec:
         app.kubernetes.io/team: database
     spec:
       containers:
-      - image: redis:6.0-alpine
+      - image: "{{ .Values.image.registry }}/{{ .Values.image.repository.redis.name }}:{{ .Values.image.repository.redis.tag }}"
         imagePullPolicy: IfNotPresent
         name: redis
         ports:
@@ -839,7 +483,7 @@ spec:
         envFrom:
         - configMapRef:
             name: orders
-        image: public.ecr.aws/aws-containers/retail-store-sample-orders:0.2.0
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository.orders.name }}:{{ .Values.image.repository.orders.tag }}"
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
@@ -920,7 +564,7 @@ spec:
             secretKeyRef:
               key: name
               name: orders-db
-        image: mysql:5.7.6
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository.mysql.name }}:{{ .Values.image.repository.mysql.tag }}"
         imagePullPolicy: IfNotPresent
         name: mysql
         ports:
@@ -948,7 +592,7 @@ spec:
         app.kubernetes.io/name: rabbitmq
     spec:
       containers:
-      - image: rabbitmq:3-management
+      - image: "{{ .Values.image.registry }}/{{ .Values.image.repository.rabbitmq.name }}:{{ .Values.image.repository.rabbitmq.tag }}"
         imagePullPolicy: IfNotPresent
         name: rabbitmq
         ports:
@@ -993,7 +637,7 @@ spec:
         envFrom:
         - configMapRef:
             name: ui
-        image: public.ecr.aws/aws-containers/retail-store-sample-ui:0.2.0
+        image: "{{ .Values.image.registry }}/{{ .Values.image.repository.ui.name }}:{{ .Values.image.repository.ui.tag }}"
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
