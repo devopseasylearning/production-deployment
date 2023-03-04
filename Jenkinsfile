@@ -29,7 +29,7 @@ pipeline {
 
                           string(
                             defaultValue: '0.2.0',
-                            name: 'bomber_assets',
+                            name: 'BOMBERassets',
 			    description: 'Enter the image Tag to deploy assets',
                             trim: true
                             ),
@@ -37,28 +37,28 @@ pipeline {
 
                           string(
                             defaultValue: '0.2.0',
-                            name: 'bomber_cart',
+                            name: 'BOMBERcart',
 			    description: 'Enter the image Tag to deploy cart',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '1.13.1',
-                            name: 'bomber_dynamodb',
+                            name: 'BOMBERdynamodb',
 			    description: 'Enter the image Tag to deploy dynamodb',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '0.2.0',
-                            name: 'bomber_catalog',
+                            name: 'BOMBERcatalog',
 			    description: 'Enter the image Tag to deploy catalog',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '5.7.6',
-                            name: 'bomber_mysql',
+                            name: 'BOMBERmysql',
 			    description: 'Enter the image Tag to deploy mysql',
                             trim: true
                             ),
@@ -66,7 +66,7 @@ pipeline {
 
                           string(
                             defaultValue: '0.2.0',
-                            name: 'bomber_checkout',
+                            name: 'BOMBERcheckout',
 			    description: 'Enter the image Tag to deploy checkout',
                             trim: true
                             ),
@@ -74,28 +74,28 @@ pipeline {
 
                           string(
                             defaultValue: '6.0-alpine',
-                            name: 'bomber_redis',
+                            name: 'BOMBERredis',
 			    description: 'Enter the image Tag to deploy redis',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '0.0.2',
-                            name: 'bomber_rabbitmq',
+                            name: 'BOMBERrabbitmq',
 			    description: 'Enter the image Tag to deploy rabbitmq',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '0.2.0',
-                            name: 'bomber_orders',
+                            name: 'BOMBERorders',
 			    description: 'Enter the image Tag to deploy orders',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '0.2.0',
-                            name: 'bomber_ui',
+                            name: 'BOMBERui',
 			    description: 'Enter the image Tag to deploy ui',
                             trim: true
                             ),                         
@@ -132,28 +132,28 @@ pipeline {
                 docker pull   devopseasylearning2021/rabbitmq:0.0.2
                 docker pull    devopseasylearning2021/ui:0.2.0            
                       
-                      docker tag  devopseasylearning2021/assets:0.2.0           devopseasylearning2021/assets:$bomber_assets
-                      docker tag  devopseasylearning2021/cart:0.2.0             devopseasylearning2021/cart:$bomber_cart
-                      docker tag  devopseasylearning2021/dynamodb:1.13.1          devopseasylearning2021/dynamodb:$bomber_dynamodb
-                      docker tag  devopseasylearning2021/catalog:0.2.0           devopseasylearning2021/catalog:$bomber_catalog 
-                      docker tag   devopseasylearning2021/mysql:5.7.6            devopseasylearning2021/mysql:$bomber_mysql
-                      docker tag   devopseasylearning2021/checkout:0.2.0          devopseasylearning2021/checkout:$bomber_checkout
-                      docker tag   devopseasylearning2021/redis:6.0-alpine           devopseasylearning2021/redis:$bomber_redis 
-                      docker tag   devopseasylearning2021/orders:0.2.0           devopseasylearning2021/orders:$bomber_orders
-                      docker tag   devopseasylearning2021/rabbitmq:0.0.2          devopseasylearning2021/rabbitmq:$bomber_rabbitmq
-                      docker tag    devopseasylearning2021/ui:0.2.0              devopseasylearning2021/ui:$bomber_ui
+                      docker tag  devopseasylearning2021/assets:0.2.0           devopseasylearning2021/assets:$BOMBERassets
+                      docker tag  devopseasylearning2021/cart:0.2.0             devopseasylearning2021/cart:$BOMBERcart
+                      docker tag  devopseasylearning2021/dynamodb:1.13.1          devopseasylearning2021/dynamodb:$BOMBERdynamodb
+                      docker tag  devopseasylearning2021/catalog:0.2.0           devopseasylearning2021/catalog:$BOMBERcatalog 
+                      docker tag   devopseasylearning2021/mysql:5.7.6            devopseasylearning2021/mysql:$BOMBERmysql
+                      docker tag   devopseasylearning2021/checkout:0.2.0          devopseasylearning2021/checkout:$BOMBERcheckout
+                      docker tag   devopseasylearning2021/redis:6.0-alpine           devopseasylearning2021/redis:$BOMBERredis 
+                      docker tag   devopseasylearning2021/orders:0.2.0           devopseasylearning2021/orders:$BOMBERorders
+                      docker tag   devopseasylearning2021/rabbitmq:0.0.2          devopseasylearning2021/rabbitmq:$BOMBERrabbitmq
+                      docker tag    devopseasylearning2021/ui:0.2.0              devopseasylearning2021/ui:$BOMBERui
                       
                       
-                      docker push  devopseasylearning2021/assets:$bomber_assets
-                      docker push  devopseasylearning2021/cart:$bomber_cart
-                      docker push          devopseasylearning2021/dynamodb:$bomber_dynamodb 
-                      docker push   devopseasylearning2021/catalog:$bomber_catalog 
-                      docker push   devopseasylearning2021/mysql:$bomber_mysql
-                      docker push    devopseasylearning2021/checkout:$bomber_checkout
-                      docker push       devopseasylearning2021/redis:$bomber_redis 
-                      docker push   devopseasylearning2021/orders:$bomber_orders
-                      docker push            devopseasylearning2021/rabbitmq:$bomber_rabbitmq
-                      docker push   devopseasylearning2021/ui:$bomber_ui
+                      docker push  devopseasylearning2021/assets:$BOMBERassets
+                      docker push  devopseasylearning2021/cart:$BOMBERcart
+                      docker push          devopseasylearning2021/dynamodb:$BOMBERdynamodb 
+                      docker push   devopseasylearning2021/catalog:$BOMBERcatalog 
+                      docker push   devopseasylearning2021/mysql:$BOMBERmysql
+                      docker push    devopseasylearning2021/checkout:$BOMBERcheckout
+                      docker push       devopseasylearning2021/redis:$BOMBERredis 
+                      docker push   devopseasylearning2021/orders:$BOMBERorders
+                      docker push            devopseasylearning2021/rabbitmq:$BOMBERrabbitmq
+                      docker push   devopseasylearning2021/ui:$BOMBERui
                 '''
             }
         }

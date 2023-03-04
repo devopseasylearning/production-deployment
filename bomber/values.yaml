@@ -12,28 +12,28 @@ image:
     dynamodb:
      name: dynamodb
 <<<<<<< HEAD
-     tag: $bomber_dynamodb
+     tag: $BOMBERdynamodb
     catalog:
      name: catalog
-     tag: $bomber_catalog 
+     tag: $BOMBERcatalog 
     mysql:
      name: mysql
-     tag: $bomber_mysql 
+     tag: $BOMBERmysql 
     checkout:
      name: checkout
-     tag: $bomber_checkout
+     tag: $BOMBERcheckout
     redis:
      name: redis
-     tag: $bomber_redis
+     tag: $BOMBERredis
     orders:
      name: orders
-     tag: $bomber_orders
+     tag: $BOMBERorders
     rabbitmq:
      name: rabbitmq
-     tag: $bomber_rabbitmq
+     tag: $BOMBERrabbitmq
     ui:
      name: ui
-     tag: $bomber_ui   
+     tag: $BOMBERui   
 =======
      tag: v1.0.0
     catalog:
