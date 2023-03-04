@@ -28,7 +28,7 @@ options {
                             description: '''Warning time (in minutes) before starting upgrade'''),
 
                           string(
-                                defaultValue: 'develop',
+                                defaultValue: 'production',
                                 name: 'Please_leave_this_section_as_it_is',
                                 trim: true
                             ),
@@ -252,32 +252,32 @@ post {
 
 
 def notifyUpgrade(String buildResult, String whereAt) {
-  if (Please_leave_this_section_as_it_is == 'origin/develop') {
-    channel = 'development-alerts'
+  if (Please_leave_this_section_as_it_is == 'origin/production') {
+    channel = 'go-no-go-production'
   } else {
-    channel = 'development-alerts'
+    channel = 'go-no-go-production'
   }
   if (buildResult == "SUCCESS") {
     switch(whereAt) {
       case 'WARNING':
         slackSend(channel: channel,
                 color: "#439FE0",
-                message: "Challenger: Upgrade starting in ${env.WARNTIME} minutes @ ${env.BUILD_URL}  Application CHALLENGER")
+                message: "Production: Upgrade starting in ${env.WARNTIME} minutes @ ${env.BUILD_URL}  Application $Application")
         break
     case 'STARTING':
       slackSend(channel: channel,
                 color: "good",
-                message: "Challenger: Starting upgrade @ ${env.BUILD_URL} Application CHALLENGER")
+                message: "Production: Starting upgrade @ ${env.BUILD_URL} Application $Application")
       break
     default:
         slackSend(channel: channel,
                 color: "good",
-                message: "Challenger: Upgrade completed successfully @ ${env.BUILD_URL}  Application CHALLENGER")
+                message: "Production: Upgrade completed successfully @ ${env.BUILD_URL}  Application $Application")
         break
     }
   } else {
     slackSend(channel: channel,
               color: "danger",
-              message: "Challenger: Upgrade was not successful. Please investigate it immediately.  @ ${env.BUILD_URL}  Application CHALLENGER")
+              message: "Production: Upgrade was not successful. Please investigate it immediately.  @ ${env.BUILD_URL}  Application $Application")
   }
 }
