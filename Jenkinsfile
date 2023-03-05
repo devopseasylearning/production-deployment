@@ -282,13 +282,13 @@ stage('Update FOOD values file') {
                  rm -rf production-deployment || true
                  git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
                  cd production-deployment/food
-                 cat <<EOF > values.yaml
-                 replicaCount: 3
-                 image:
-                   repository: devopseasylearning2021/food
-                   pullPolicy: IfNotPresent
-                   tag: "$food_client"
-                 EOF
+cat <<EOF > values.yaml
+   replicaCount: 3
+   image:
+     repository: devopseasylearning2021/food
+     pullPolicy: IfNotPresent
+     tag: "$food_client"
+EOF
                  
                  cat values.yaml
                  git status
