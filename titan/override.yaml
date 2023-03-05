@@ -2,4 +2,4 @@
     image:
       repository: devopseasylearning2021/canary-prod 
       pullPolicy: IfNotPresent
-      tag: "vdd"
+      tag: "v1.0.1"
