@@ -23,6 +23,28 @@ options {
                                 ),
                           string(
                             defaultValue: 'v1.0.1',
+                            name: 'thunder_ui',
+			    description: 'Enter the image Tag to deploy thunder ui',
+                            trim: true
+                            ),
+
+                          string(
+                            defaultValue: 'v1.0.1',
+                            name: 'thunder_consumer',
+			    description: 'Enter the image Tag to deploy thunder consumer',
+                            trim: true
+                            ),
+
+                          string(
+                            defaultValue: 'v1.0.1',
+                            name: 'thunder_api',
+			    description: 'Enter the image Tag to deploy thunder api',
+                            trim: true
+                            ),
+
+
+                          string(
+                            defaultValue: 'v1.0.1',
                             name: 'titan_ui',
 			    description: 'Enter the image Tag to deploy titan ui',
                             trim: true
@@ -515,6 +537,56 @@ EOF
 	      }
 
 	    }
+
+
+
+
+
+
+
+
+
+
+
+stage('Update titan values file') {
+  when{   
+      expression {
+      env.Application == 'Titan' }
+            }
+
+	      steps {
+	        script {
+	          withCredentials([
+	            string(credentialsId: 'github-token2', variable: 'TOKEN'),
+	          ]) {
+
+	            sh '''
+                 rm -rf production-deployment || true
+                 git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
+                 cd production-deployment/thunder
+cat <<EOF > override.yaml
+    replicaCount: 3
+    image:
+      repository: devopseasylearning2021/washetaria
+      pullPolicy: IfNotPresent
+      tag: "$thunder_ui"
+EOF
+                 
+                 git config --global user.name "devopseasylearning"
+                 git config --global user.email info@devopseasylearning.com
+                 git add -A 
+                 git commit -m "commit from Jenkins" || true
+                 git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git  || true
+	            '''
+	          }
+
+	        }
+
+	      }
+
+	    }
+
+
 
 
 
