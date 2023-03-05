@@ -189,7 +189,7 @@ options {
         }
 
 
-stage('Update values file') {
+stage('Update BOMBER values file') {
   when{   
       expression {
       env.Application == 'Bomber' }
@@ -266,7 +266,7 @@ git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/product
 
 
 
-stage('Update values file') {
+stage('Update FOOD values file') {
   when{   
       expression {
       env.Application == 'food' }
