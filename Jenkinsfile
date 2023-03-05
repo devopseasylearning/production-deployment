@@ -30,14 +30,14 @@ options {
 
                           string(
                             defaultValue: 'v1.0.1',
-                            name: 'titan_ui',
+                            name: 'titan_db',
 			    description: 'Enter the image Tag to deploy titan db',
                             trim: true
                             ),
 
                           string(
                             defaultValue: 'v1.0.1',
-                            name: 'titan_ui',
+                            name: 'titan_api',
 			    description: 'Enter the image Tag to deploy titan api',
                             trim: true
                             ),
