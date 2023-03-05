@@ -156,7 +156,7 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: "{{ .Values.image.registry }}/{{ .Values.image.repository.mysql.name }}:{{ .Values.image.repository.mysql.tag }}"
+      - image:  mysql:8.0.32
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
