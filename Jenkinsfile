@@ -290,7 +290,8 @@ stage('Update FOOD values file') {
                    tag: "$food_client"
                  EOF
                  
-                 cat values.yaml && git status
+                 cat values.yaml
+                 git status
                  git config --global user.name "devopseasylearning"
                  git config --global user.email info@devopseasylearning.com
                  git add -A 
