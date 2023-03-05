@@ -128,7 +128,26 @@ options {
                             trim: true
                             ),
 
+                          string(
+                            defaultValue: '001',
+                            name: 'kanibal_client',
+			    description: 'Enter the image Tag to deploy Kanibal client',
+                            trim: true
+                            ),
 
+                          string(
+                            defaultValue: '001',
+                            name: 'kanibal_api',
+			    description: 'Enter the image Tag to deploy Kanibal api',
+                            trim: true
+                            ),
+
+                          string(
+                            defaultValue: '001',
+                            name: 'kanibal_db',
+			    description: 'Enter the image Tag to deploy Kanibal db',
+                            trim: true
+                            ),
 
                         ])
                     ])
@@ -256,6 +275,52 @@ git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/product
 	        }
 
 	      }
+
+
+
+
+
+
+stage('Update kanibal values file') {
+  when{   
+      expression {
+      env.Application == 'Kanibal' }
+            }
+
+	      steps {
+	        script {
+	          withCredentials([
+	            string(credentialsId: 'github-token2', variable: 'TOKEN'),
+	          ]) {
+
+	            sh '''
+                 rm -rf production-deployment || true
+                 git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
+                 cd production-deployment/agency
+                 cat <<EOF > values.yaml
+                 replicaCount: 3
+                 image:
+                   repository: devopseasylearning2021/agency
+                   pullPolicy: IfNotPresent
+                   tag: "$kanibal_client"
+                 EOF
+                 
+                 git config --global user.name "devopseasylearning"
+                 git config --global user.email info@devopseasylearning.com
+                 git add -A 
+                 git commit -m "commit from Jenkins" || true
+                 git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git  || true
+	            '''
+	          }
+
+	        }
+
+	      }
+
+	    }
+
+
+
 
 	    }
 

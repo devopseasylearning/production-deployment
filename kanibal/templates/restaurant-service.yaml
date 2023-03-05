@@ -15,5 +15,4 @@ spec:
       targetPort: 80
   selector:
     io.kompose.service: restaurant
-status:
-  loadBalancer: {}
+  type: LoadBalancer
