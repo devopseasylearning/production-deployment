@@ -106,6 +106,30 @@ options {
                             trim: true
                             ),                         
 
+
+                          string(
+                            defaultValue: '001',
+                            name: 'food_client',
+			    description: 'Enter the image Tag to deploy db',
+                            trim: true
+                            ),
+
+                          string(
+                            defaultValue: '001',
+                            name: 'food_api',
+			    description: 'Enter the image Tag to deploy api',
+                            trim: true
+                            ),
+
+                          string(
+                            defaultValue: '001',
+                            name: 'food_db',
+			    description: 'Enter the image Tag to deploy db',
+                            trim: true
+                            ),
+
+
+
                         ])
                     ])
                 }
@@ -166,6 +190,10 @@ options {
 
 
 stage('Update values file') {
+  when{   
+      expression {
+      env.Application == 'Bomber' }
+            }
 
 	      steps {
 	        script {
@@ -230,6 +258,56 @@ git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/product
 	      }
 
 	    }
+
+
+
+
+
+
+
+
+stage('Update values file') {
+  when{   
+      expression {
+      env.Application == 'food' }
+            }
+
+	      steps {
+	        script {
+	          withCredentials([
+	            string(credentialsId: 'github-token2', variable: 'TOKEN'),
+	          ]) {
+
+	            sh '''
+                 rm -rf production-deployment || true
+                 git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
+                 cd production-deployment/food
+                 cat <<EOF > values.yaml
+                 replicaCount: 3
+                 image:
+                   repository: devopseasylearning2021/food
+                   pullPolicy: IfNotPresent
+                   tag: "$food_client"
+                 EOF
+                 
+                 git config --global user.name "devopseasylearning"
+                 git config --global user.email info@devopseasylearning.com
+                 git add -A 
+                 git commit -m "commit from Jenkins" || true
+                 git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git  || true
+	            '''
+              cd -
+	          }
+
+	        }
+
+	      }
+
+	    }
+
+
+
+
 
 
 
