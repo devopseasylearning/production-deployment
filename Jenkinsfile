@@ -295,8 +295,9 @@ stage('Update values file') {
                  git add -A 
                  git commit -m "commit from Jenkins" || true
                  git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git  || true
-	            '''
-              cd -
+	            cd -
+              '''
+              
 	          }
 
 	        }
