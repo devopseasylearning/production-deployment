@@ -1,0 +1,5 @@
+   replicaCount: 3
+   image:
+     repository: devopseasylearning2021/food
+     pullPolicy: IfNotPresent
+     tag: "001"
