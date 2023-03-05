@@ -551,7 +551,7 @@ EOF
 stage('Update thunder values file') {
   when{   
       expression {
-      env.Application == 'Titan' }
+      env.Application == 'Thunder' }
             }
 
 	      steps {
