@@ -1,0 +1,5 @@
+image:
+  repository: devopseasylearning2021/canary-prod 
+  pullPolicy: IfNotPresent
+  tag: "v1.0.1"
+replicaCount: 3
