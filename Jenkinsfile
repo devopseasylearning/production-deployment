@@ -353,13 +353,13 @@ stage('Update kanibal values file') {
                  rm -rf production-deployment || true
                  git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
                  cd production-deployment/kanibal
-                 cat <<EOF > values.yaml
-                 replicaCount: 3
-                 image:
-                   repository: devopseasylearning2021/agency
-                   pullPolicy: IfNotPresent
-                   tag: "$kanibal_client"
-                 EOF
+cat <<EOF > values.yaml
+    replicaCount: 3
+    image:
+      repository: devopseasylearning2021/agency
+      pullPolicy: IfNotPresent
+      tag: "$kanibal_client"
+EOF
                  
                  git config --global user.name "devopseasylearning"
                  git config --global user.email info@devopseasylearning.com
