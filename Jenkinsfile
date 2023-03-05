@@ -22,21 +22,21 @@ options {
                                  
                                 ),
                           string(
-                            defaultValue: 'v1.0.1',
+                            defaultValue: '001',
                             name: 'thunder_ui',
 			    description: 'Enter the image Tag to deploy thunder ui',
                             trim: true
                             ),
 
                           string(
-                            defaultValue: 'v1.0.1',
+                            defaultValue: '001',
                             name: 'thunder_consumer',
 			    description: 'Enter the image Tag to deploy thunder consumer',
                             trim: true
                             ),
 
                           string(
-                            defaultValue: 'v1.0.1',
+                            defaultValue: '001',
                             name: 'thunder_api',
 			    description: 'Enter the image Tag to deploy thunder api',
                             trim: true
