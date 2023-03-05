@@ -548,7 +548,7 @@ EOF
 
 
 
-stage('Update titan values file') {
+stage('Update thunder values file') {
   when{   
       expression {
       env.Application == 'Titan' }
