@@ -616,7 +616,7 @@ EOF
 stage('Update KFC values file') {
   when{   
       expression {
-      env.Application == 'Thunder' }
+      env.Application == 'KFC' }
             }
 
 	      steps {
