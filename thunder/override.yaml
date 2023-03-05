@@ -2,4 +2,4 @@
     image:
       repository: devopseasylearning2021/washetaria
       pullPolicy: IfNotPresent
-      tag: "0000"
+      tag: "v1.0.1"
