@@ -2,4 +2,4 @@
     image:
       repository: devopseasylearning2021/kfc
       pullPolicy: IfNotPresent
-      tag: "001"
+      tag: "cccc"
