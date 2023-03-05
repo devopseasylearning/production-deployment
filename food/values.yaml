@@ -2,4 +2,4 @@
    image:
      repository: devopseasylearning2021/food
      pullPolicy: IfNotPresent
-     tag: "001"
+     tag: "002"
