@@ -254,7 +254,7 @@ cd production-deployment/bomber
 cat <<EOF > values.yaml
 replicaCount: 1
 image:
-  registry: deveopseasylearning2021
+  registry: devopseasylearning2021
   pullPolicy: IfNotPresent
   repository:
     assets:
@@ -423,7 +423,7 @@ stage('Update weather values file') {
 cat <<EOF > values.yaml
     replicaCount: 1
     image:
-      registry: deveopseasylearning2021
+      registry: devopseasylearning2021
       pullPolicy: IfNotPresent
       repository:
         auth:
