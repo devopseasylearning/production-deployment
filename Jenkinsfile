@@ -17,7 +17,7 @@ options {
                         parameters([
                         
                         choice(
-                            choices: ['KFC', 'Bomber', 'Food', 'Kanibal', 'Weather', 'Thunder', 'Titan', 'Yelb'], 
+                            choices: ['KFC', 'Bomber', 'Food', 'Kanibal', 'Weather', 'Thunder', 'Titan'], 
                             name: 'Application'
                                  
                                 ),
