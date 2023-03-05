@@ -436,7 +436,7 @@ cat <<EOF > values.yaml
          name: weatherapp-ui
          tag: $weather_ui
         weather:
-         name: weather
+         name: weatherapp-weather
          tag: $weather_weather 
 EOF
                  git config --global user.name "devopseasylearning"
