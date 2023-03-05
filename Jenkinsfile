@@ -17,30 +17,11 @@ options {
                         parameters([
                         
                         choice(
-                            choices: ['KFC', 'Bomber', 'Food', 'Kanibal', 'Weather', 'Thunder', 'Titan'], 
+                            choices: ['KFC', 'Bomber', 'Weather', 'Titan'], 
                             name: 'Application'
                                  
                                 ),
-                          string(
-                            defaultValue: '001',
-                            name: 'thunder_ui',
-			    description: 'Enter the image Tag to deploy thunder ui',
-                            trim: true
-                            ),
 
-                          string(
-                            defaultValue: '001',
-                            name: 'thunder_consumer',
-			    description: 'Enter the image Tag to deploy thunder consumer',
-                            trim: true
-                            ),
-
-                          string(
-                            defaultValue: '001',
-                            name: 'thunder_api',
-			    description: 'Enter the image Tag to deploy thunder api',
-                            trim: true
-                            ),
 
                           string(
                             defaultValue: '001',
@@ -168,48 +149,6 @@ options {
                             trim: true
                             ),                         
 
-
-                          string(
-                            defaultValue: '011',
-                            name: 'food_client',
-			    description: 'Enter the image Tag to deploy Food client',
-                            trim: true
-                            ),
-
-                          string(
-                            defaultValue: '001',
-                            name: 'food_api',
-			    description: 'Enter the image Tag to deploy Food api',
-                            trim: true
-                            ),
-
-                          string(
-                            defaultValue: '001',
-                            name: 'food_db',
-			    description: 'Enter the image Tag to deploy Food db',
-                            trim: true
-                            ),
-
-                          string(
-                            defaultValue: '001',
-                            name: 'kanibal_client',
-			    description: 'Enter the image Tag to deploy Kanibal client',
-                            trim: true
-                            ),
-
-                          string(
-                            defaultValue: '001',
-                            name: 'kanibal_api',
-			    description: 'Enter the image Tag to deploy Kanibal api',
-                            trim: true
-                            ),
-
-                          string(
-                            defaultValue: '001',
-                            name: 'kanibal_db',
-			    description: 'Enter the image Tag to deploy Kanibal db',
-                            trim: true
-                            ),
 
 
                           string(
@@ -373,99 +312,6 @@ git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/product
 
 
 
-
-
-
-stage('Update FOOD values file') {
-  when{   
-      expression {
-      env.Application == 'Food' }
-            }
-
-	      steps {
-	        script {
-	          withCredentials([
-	            string(credentialsId: 'github-token2', variable: 'TOKEN'),
-	          ]) {
-
-	            sh '''
-                 rm -rf production-deployment || true
-                 git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
-                 cd production-deployment/food
-cat <<EOF > prod-values.yaml
-   replicaCount: 3
-   image:
-     repository: devopseasylearning2021/food
-     pullPolicy: IfNotPresent
-     tag: "$food_client"
-EOF
-                 
-                 cat values.yaml
-                 git status
-                 git config --global user.name "devopseasylearning"
-                 git config --global user.email info@devopseasylearning.com
-                 git add -A 
-                 git commit -m "commit from Jenkins" || true
-                 git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git  || true
-	            cd -
-              '''
-              
-	          }
-
-	        }
-
-	      }
-
-	    }
-
-
-
-stage('Update kanibal values file') {
-  when{   
-      expression {
-      env.Application == 'Kanibal' }
-            }
-
-	      steps {
-	        script {
-	          withCredentials([
-	            string(credentialsId: 'github-token2', variable: 'TOKEN'),
-	          ]) {
-
-	            sh '''
-                 rm -rf production-deployment || true
-                 git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
-                 cd production-deployment/kanibal
-cat <<EOF > values.yaml
-    replicaCount: 3
-    image:
-      repository: devopseasylearning2021/agency
-      pullPolicy: IfNotPresent
-      tag: "$kanibal_client"
-EOF
-                 
-                 git config --global user.name "devopseasylearning"
-                 git config --global user.email info@devopseasylearning.com
-                 git add -A 
-                 git commit -m "commit from Jenkins" || true
-                 git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git  || true
-	            '''
-	          }
-
-	        }
-
-	      }
-
-	    }
-
-
-
-
-
-
-
-
-
 stage('Update weather values file') {
   when{   
       expression {
@@ -557,58 +403,6 @@ EOF
 	      }
 
 	    }
-
-
-
-
-
-
-
-
-
-
-
-stage('Update thunder values file') {
-  when{   
-      expression {
-      env.Application == 'Thunder' }
-            }
-
-	      steps {
-	        script {
-	          withCredentials([
-	            string(credentialsId: 'github-token2', variable: 'TOKEN'),
-	          ]) {
-
-	            sh '''
-                 rm -rf production-deployment || true
-                 git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
-                 cd production-deployment/thunder
-cat <<EOF > prod-values.yaml
-    replicaCount: 3
-    image:
-      repository: devopseasylearning2021/washetaria
-      pullPolicy: IfNotPresent
-      tag: "$thunder_ui"
-EOF
-                 
-                 git config --global user.name "devopseasylearning"
-                 git config --global user.email info@devopseasylearning.com
-                 git add -A 
-                 git commit -m "commit from Jenkins" || true
-                 git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git  || true
-	            '''
-	          }
-
-	        }
-
-	      }
-
-	    }
-
-
-
-
 
 
 
