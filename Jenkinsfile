@@ -426,7 +426,7 @@ cat <<EOF > values.yaml
       registry: deveopseasylearning2021
       pullPolicy: IfNotPresent
       repository:
-        weatherapp-auth:
+        auth:
          name: weatherapp-auth
          tag: $weather_auth        
         mysql:
