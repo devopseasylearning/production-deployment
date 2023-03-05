@@ -36,7 +36,7 @@ options {
                           string(
                             defaultValue: '0.2.0',
                             name: 'bomber_assets',
-			    description: 'Enter the image Tag to deploy assets',
+			    description: 'Enter the image Tag to deploy Bomber assets',
                             trim: true
                             ),
 
@@ -44,28 +44,28 @@ options {
                           string(
                             defaultValue: '0.2.0',
                             name: 'bomber_cart',
-			    description: 'Enter the image Tag to deploy cart',
+			    description: 'Enter the image Tag to deploy Bomber cart',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '1.13.1',
                             name: 'bomber_dynamodb',
-			    description: 'Enter the image Tag to deploy dynamodb',
+			    description: 'Enter the image Tag to deploy Bomber dynamodb',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '0.2.0',
                             name: 'bomber_catalog',
-			    description: 'Enter the image Tag to deploy catalog',
+			    description: 'Enter the image Tag to deploy Bomber catalog',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '5.7.6',
                             name: 'bomber_mysql',
-			    description: 'Enter the image Tag to deploy mysql',
+			    description: 'Enter the image Tag to deploy Bomber mysql',
                             trim: true
                             ),
 
@@ -73,7 +73,7 @@ options {
                           string(
                             defaultValue: '0.2.0',
                             name: 'bomber_checkout',
-			    description: 'Enter the image Tag to deploy checkout',
+			    description: 'Enter the image Tag to deploy Bomber checkout',
                             trim: true
                             ),
 
@@ -81,28 +81,28 @@ options {
                           string(
                             defaultValue: '6.0-alpine',
                             name: 'bomber_redis',
-			    description: 'Enter the image Tag to deploy redis',
+			    description: 'Enter the image Tag to deploy Bomber redis',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '0.0.2',
                             name: 'bomber_rabbitmq',
-			    description: 'Enter the image Tag to deploy rabbitmq',
+			    description: 'Enter the image Tag to deploy Bomber rabbitmq',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '0.2.0',
                             name: 'bomber_orders',
-			    description: 'Enter the image Tag to deploy orders',
+			    description: 'Enter the image Tag to deploy Bomber orders',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '0.2.0',
                             name: 'bomber_ui',
-			    description: 'Enter the image Tag to deploy ui',
+			    description: 'Enter the image Tag to deploy Bomber ui',
                             trim: true
                             ),                         
 
@@ -110,21 +110,21 @@ options {
                           string(
                             defaultValue: '001',
                             name: 'food_client',
-			    description: 'Enter the image Tag to deploy db',
+			    description: 'Enter the image Tag to deploy Food client',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '001',
                             name: 'food_api',
-			    description: 'Enter the image Tag to deploy api',
+			    description: 'Enter the image Tag to deploy Food api',
                             trim: true
                             ),
 
                           string(
                             defaultValue: '001',
                             name: 'food_db',
-			    description: 'Enter the image Tag to deploy db',
+			    description: 'Enter the image Tag to deploy Food db',
                             trim: true
                             ),
 
@@ -269,7 +269,7 @@ git push https://devopseasylearning:$TOKEN@github.com/devopseasylearning/product
 stage('Update FOOD values file') {
   when{   
       expression {
-      env.Application == 'food' }
+      env.Application == 'Food' }
             }
 
 	      steps {
