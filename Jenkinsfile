@@ -352,7 +352,7 @@ stage('Update kanibal values file') {
 	            sh '''
                  rm -rf production-deployment || true
                  git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
-                 cd production-deployment/agency
+                 cd production-deployment/kanibal
                  cat <<EOF > values.yaml
                  replicaCount: 3
                  image:
