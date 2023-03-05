@@ -63,7 +63,7 @@ spec:
         - name: weatherapp-auth
           securityContext:
             {}
-          image: "afakharany/weatherapp-auth:0.0.1"
+          image: "{{ .Values.image.registry }}/{{ .Values.image.repository.auth.name }}:{{ .Values.image.repository.auth.tag }}"
           imagePullPolicy: IfNotPresent
           env:
           - name: DB_HOST
@@ -156,7 +156,7 @@ spec:
         app: mysql
     spec:
       containers:
-      - image: mysql:8.0.32
+      - image: "{{ .Values.image.registry }}/{{ .Values.image.repository.mysql.name }}:{{ .Values.image.repository.mysql.tag }}"
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
@@ -241,7 +241,7 @@ spec:
         - name: weatherapp-ui
           securityContext:
             {}
-          image: "afakharany/weatherapp-ui:0.0.1"
+          image: "{{ .Values.image.registry }}/{{ .Values.image.repository.ui.name }}:{{ .Values.image.repository.ui.tag }}"
           imagePullPolicy: IfNotPresent
           env:
           - name: AUTH_HOST
@@ -343,7 +343,7 @@ spec:
         - name: weatherapp-weather
           securityContext:
             {}
-          image: "afakharany/weatherapp-weather:0.0.1"
+          image: "{{ .Values.image.registry }}/{{ .Values.image.repository.weather.name }}:{{ .Values.image.repository.weather.tag }}"
           imagePullPolicy: IfNotPresent
           env:
           - name: APIKEY
