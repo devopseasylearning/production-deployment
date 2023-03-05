@@ -430,10 +430,10 @@ cat <<EOF > values.yaml
          name: weatherapp-auth
          tag: $weather_auth        
         mysql:
-         name: mysql
+         name: weatherapp-mysql
          tag: $weather_mysql      
         ui:
-         name: ui
+         name: weatherapp-ui
          tag: $weather_ui
         weather:
          name: weather
