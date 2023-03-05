@@ -536,7 +536,7 @@ stage('Update titan values file') {
                  rm -rf production-deployment || true
                  git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
                  cd production-deployment/titan
-cat <<EOF > override.yaml
+cat <<EOF > prod-values.yaml
     replicaCount: 3
     image:
       repository: devopseasylearning2021/canary-prod 
@@ -584,7 +584,7 @@ stage('Update thunder values file') {
                  rm -rf production-deployment || true
                  git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
                  cd production-deployment/thunder
-cat <<EOF > override.yaml
+cat <<EOF > prod-values.yaml
     replicaCount: 3
     image:
       repository: devopseasylearning2021/washetaria
@@ -629,7 +629,7 @@ stage('Update KFC values file') {
                  rm -rf production-deployment || true
                  git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
                  cd production-deployment/kfc
-cat <<EOF > override.yaml
+cat <<EOF > prod-values.yaml
     replicaCount: 3
     image:
       repository: devopseasylearning2021/kfc
