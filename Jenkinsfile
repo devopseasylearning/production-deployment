@@ -420,23 +420,23 @@ stage('Update weather values file') {
                  git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
                  cd production-deployment/weather
 cat <<EOF > values.yaml
-     replicaCount: 1
-     image:
-       registry: deveopseasylearning2021
-       pullPolicy: IfNotPresent
-       repository:
-         weatherapp-auth:
-          name: weatherapp-auth
-          tag: $weather_weatherapp-auth        
-         mysql:
-          name: mysql
-          tag: $weather_mysql      
-         ui:
-          name: ui
-          tag: $weather_ui
-         weather:
-          name: weather
-          tag: $weather_weather  
+    replicaCount: 1
+    image:
+      registry: deveopseasylearning2021
+      pullPolicy: IfNotPresent
+      repository:
+        weatherapp-auth:
+         name: weatherapp-auth
+         tag: $weather_weatherapp-auth        
+        mysql:
+         name: mysql
+         tag: $weather_mysql      
+        ui:
+         name: ui
+         tag: $weather_ui
+        weather:
+         name: weather
+         tag: $weather_weather  
 EOF     
                  git config --global user.name "devopseasylearning"
                  git config --global user.email info@devopseasylearning.com
