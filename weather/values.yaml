@@ -3,7 +3,7 @@
       registry: deveopseasylearning2021
       pullPolicy: IfNotPresent
       repository:
-        weatherapp-auth:
+        auth:
          name: weatherapp-auth
          tag: 0.0.1        
         mysql:
