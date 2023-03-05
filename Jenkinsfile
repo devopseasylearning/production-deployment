@@ -613,7 +613,7 @@ EOF
 
 
 
-stage('Update thunder values file') {
+stage('Update KFC values file') {
   when{   
       expression {
       env.Application == 'Thunder' }
