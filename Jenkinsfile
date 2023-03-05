@@ -170,7 +170,7 @@ options {
 
 
                           string(
-                            defaultValue: '001',
+                            defaultValue: '011',
                             name: 'food_client',
 			    description: 'Enter the image Tag to deploy Food client',
                             trim: true
@@ -392,7 +392,7 @@ stage('Update FOOD values file') {
                  rm -rf production-deployment || true
                  git clone https://devopseasylearning:$TOKEN@github.com/devopseasylearning/production-deployment.git 
                  cd production-deployment/food
-cat <<EOF > values.yaml
+cat <<EOF > prod-values.yaml
    replicaCount: 3
    image:
      repository: devopseasylearning2021/food
