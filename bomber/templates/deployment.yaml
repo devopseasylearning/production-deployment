@@ -389,7 +389,7 @@ spec:
     app.kubernetes.io/component: service
     app.kubernetes.io/instance: ui
     app.kubernetes.io/name: ui
-  type: LoadBalancer
+  type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
