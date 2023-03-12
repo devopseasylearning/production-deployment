@@ -24,7 +24,7 @@ spec:
         io.kompose.service: web
     spec:
       containers:
-        - image: devopseasylearning2021/food:011
+        - image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           name: web
           ports:
             - containerPort: 80

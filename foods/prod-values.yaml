@@ -3,3 +3,4 @@
      repository: devopseasylearning2021/food
      pullPolicy: IfNotPresent
      tag: "011"
+
