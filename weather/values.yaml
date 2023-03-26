@@ -8,7 +8,7 @@
          tag: 0.0.1        
         mysql:
          name: weatherapp-mysql
-         tag: 8.0.32eeeeeeeeeeeeeeee     
+         tag: 8.0.32
         ui:
          name: weatherapp-ui
          tag: 0.0.1
