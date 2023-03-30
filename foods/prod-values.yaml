@@ -2,4 +2,4 @@
     image:
       repository: devopseasylearning2021/food
       pullPolicy: IfNotPresent
-      tag: "jenkins-7"
+      tag: "jenkins-8"
