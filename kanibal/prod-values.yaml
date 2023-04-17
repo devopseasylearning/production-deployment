@@ -2,4 +2,4 @@
     image:
       repository: devopseasylearning2021/agency
       pullPolicy: IfNotPresent
-      tag: "jenkins-16"
+      tag: "jenkins-17"
