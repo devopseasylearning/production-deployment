@@ -1,5 +1,5 @@
     replicaCount: 3
     image:
-      repository: devopseasylearning2021/agency
+      repository: devopseasylearning2021/kanibal
       pullPolicy: IfNotPresent
-      tag: "jenkins-12"
+      tag: "jenkins-13"
