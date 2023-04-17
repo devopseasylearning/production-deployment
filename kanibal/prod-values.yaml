@@ -2,4 +2,4 @@
     image:
       repository: devopseasylearning2021/kanibal
       pullPolicy: IfNotPresent
-      tag: "jenkins-13"
+      tag: "jenkins-14"
