@@ -201,7 +201,7 @@ metadata:
     app.kubernetes.io/version: "0.0.1"
     app.kubernetes.io/managed-by: Helm
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
     - port: 80
       targetPort: http
